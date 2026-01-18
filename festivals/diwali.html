@@ -52,7 +52,7 @@
   font-size: 8.5rem;
   display: inline-block;
   line-height: 1;
-  transform: translateY(-45px); /* 👈 pull UP into true center */
+  transform: translateY(12px,-45px); /* 👈 pull UP into true center */
   filter: drop-shadow(0 20px 30px rgba(255,140,0,0.35));
 }
 
@@ -97,15 +97,16 @@
 
     /* Mobile */
     @media (max-width: 768px) {
-      .rangoli {
-        transform: translate(-50%, -50%) scale(1.4);
-      }
+  .rangoli {
+    transform: translate(-50%, -50%) scale(1.4);
+  }
 
-      .diya span {
-        font-size: 6.5rem;
-        transform: translateY(-16px);
-      }
-    }
+  .diya span {
+    font-size: 6.5rem;
+    transform: translate(8px, -16px);
+  }
+}
+
   </style>
 </head>
 
