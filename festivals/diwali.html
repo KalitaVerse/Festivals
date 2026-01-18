@@ -137,21 +137,43 @@
   </div>
 
   <script>
-    const diwaliDate = new Date("Nov 01, 2026 00:00:00").getTime();
-    const el = document.getElementById("countdown");
+  // ✅ Diwali dates (update once every few years)
+  const diwaliDates = {
+    2025: "Oct 20, 2025 00:00:00",
+    2026: "Nov 01, 2026 00:00:00",
+    2027: "Oct 29, 2027 00:00:00",
+    2028: "Oct 17, 2028 00:00:00",
+    2029: "Nov 07, 2029 00:00:00"
+  };
 
-    setInterval(() => {
-      const diff = diwaliDate - Date.now();
-      if (diff <= 0) {
-        el.textContent = "🎉 Happy Diwali!";
-        return;
-      }
-      const d = Math.floor(diff / 86400000);
-      const h = Math.floor(diff / 3600000) % 24;
-      const m = Math.floor(diff / 60000) % 60;
-      el.textContent = `${d}d ${h}h ${m}m`;
-    }, 1000);
-  </script>
+  const el = document.getElementById("countdown");
+  const now = new Date();
+  let year = now.getFullYear();
+
+  // Pick current year's Diwali
+  let targetDate = new Date(diwaliDates[year]).getTime();
+
+  // If Diwali already passed → move to next year
+  if (Date.now() > targetDate) {
+    year++;
+    targetDate = new Date(diwaliDates[year]).getTime();
+  }
+
+  setInterval(() => {
+    const diff = targetDate - Date.now();
+
+    if (diff <= 0) {
+      el.textContent = "🎉 Happy Diwali!";
+      return;
+    }
+
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor(diff / 3600000) % 24;
+    const m = Math.floor(diff / 60000) % 60;
+
+    el.textContent = `${d}d ${h}h ${m}m`;
+  }, 1000);
+</script>
 
 </body>
 </html>
