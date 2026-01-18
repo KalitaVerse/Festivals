@@ -15,47 +15,35 @@
       align-items: center;
     }
 
-    /* LEFT VISUAL */
     .visual-box {
       background: #fff3cc;
       border-radius: 26px;
       min-height: 600px;
-      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
       overflow: hidden;
     }
 
-    /* CENTER WRAPPER (fixes alignment issue) */
-    .visual-center {
-      position: relative;
-      width: 80%;
-      height: 80%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* RANGOLI */
+    /* ✅ RANGOLI PNG — FILLS ~80% OF YELLOW BOX */
     .rangoli {
       position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      opacity: 0.6;
+      inset: 10%;              /* controls size (smaller = bigger rangoli) */
+      opacity: 0.65;
       z-index: 1;
+      object-fit: contain;
       pointer-events: none;
     }
 
-    /* DIYA */
+    /* Diya on top */
     .diya {
       font-size: 11rem;
+      position: relative;
       z-index: 2;
       filter: drop-shadow(0 20px 30px rgba(255,140,0,0.35));
     }
 
-    /* RIGHT CONTENT */
     .diwali-content h2 {
       font-size: 3rem;
       color: #e65100;
@@ -94,7 +82,7 @@
       font-weight: 500;
     }
 
-    /* MOBILE */
+    /* 📱 Mobile */
     @media (max-width: 768px) {
       .diwali-layout {
         grid-template-columns: 1fr;
@@ -105,9 +93,8 @@
         min-height: 420px;
       }
 
-      .visual-center {
-        width: 85%;
-        height: 85%;
+      .rangoli {
+        inset: 12%;
       }
 
       .diya {
@@ -119,49 +106,51 @@
 
 <body>
 
-<div class="container">
-  <div class="diwali-layout">
+  <div class="container">
+    <div class="diwali-layout">
 
-    <!-- LEFT -->
-    <div class="visual-box">
-      <div class="visual-center">
-        <img src="../images/rangoli.svg" class="rangoli" alt="Rangoli">
+      <!-- LEFT -->
+      <div class="visual-box">
+        <img src="../images/rangoli.png" class="rangoli" alt="Rangoli">
         <div class="diya">🪔</div>
       </div>
-    </div>
 
-    <!-- RIGHT -->
-    <div class="diwali-content">
-      <h2>Diwali</h2>
-      <p>
-        Diwali, the Festival of Lights, celebrates the victory of light over
-        darkness and good over evil. Homes glow with diyas, rangoli decorates
-        entrances, and families come together in joy.
-      </p>
+      <!-- RIGHT -->
+      <div class="diwali-content">
+        <h2>Diwali</h2>
 
-      <div class="countdown-box">
-        ⏳ <span id="countdown">Loading…</span>
+        <p>
+          Diwali, the Festival of Lights, celebrates the victory of light over
+          darkness and good over evil. Homes glow with diyas, rangoli decorates
+          entrances, and families come together in joy.
+        </p>
+
+        <div class="countdown-box">
+          ⏳ <span id="countdown">Loading…</span>
+        </div>
+
+        <a href="../index.html" class="back-btn">← Back to Festivals</a>
       </div>
 
-      <a href="../index.html" class="back-btn">← Back to Festivals</a>
     </div>
-
   </div>
-</div>
 
-<script>
-  const diwaliDate = new Date("Nov 01, 2026 00:00:00").getTime();
-  const el = document.getElementById("countdown");
+  <script>
+    const diwaliDate = new Date("Nov 01, 2026 00:00:00").getTime();
+    const el = document.getElementById("countdown");
 
-  setInterval(() => {
-    const diff = diwaliDate - Date.now();
-    if (diff <= 0) return el.textContent = "🎉 Happy Diwali!";
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor(diff / 3600000) % 24;
-    const m = Math.floor(diff / 60000) % 60;
-    el.textContent = `${d}d ${h}h ${m}m`;
-  }, 1000);
-</script>
+    setInterval(() => {
+      const diff = diwaliDate - Date.now();
+      if (diff <= 0) {
+        el.textContent = "🎉 Happy Diwali!";
+        return;
+      }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor(diff / 3600000) % 24;
+      const m = Math.floor(diff / 60000) % 60;
+      el.textContent = `${d}d ${h}h ${m}m`;
+    }, 1000);
+  </script>
 
 </body>
 </html>
