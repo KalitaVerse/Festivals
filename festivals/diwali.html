@@ -38,23 +38,25 @@
     }
 
     /* Diya wrapper (true center) */
-    .diya {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 2;
-      pointer-events: none;
-    }
+    /* Diya wrapper — true geometric center */
+.diya {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  pointer-events: none;
+}
 
-    /* Emoji optical correction */
-    .diya span {
+/* Diya emoji — optical correction ONLY */
+.diya span {
   font-size: 8.5rem;
-  display: inline-block;
   line-height: 1;
-  transform: translateY(12px,-45px); /* 👈 pull UP into true center */
+  display: block;
+  transform: translateX(6px); /* 👈 tiny right correction */
   filter: drop-shadow(0 20px 30px rgba(255,140,0,0.35));
 }
+
 
 
     .diwali-content h2 {
@@ -103,9 +105,10 @@
 
   .diya span {
     font-size: 6.5rem;
-    transform: translate(8px, -16px);
+    transform: translateX(4px);
   }
 }
+
 
   </style>
 </head>
