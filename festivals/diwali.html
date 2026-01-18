@@ -30,22 +30,7 @@
     }
 
     /* RANGOLI (behind diya) */
-    .visual-box::before {
-      content: "";
-      position: absolute;
-      width: 460px;
-      height: 460px;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at center,
-          rgba(255,183,77,0.40) 0%,
-          rgba(255,152,0,0.30) 28%,
-          rgba(233,30,99,0.22) 48%,
-          rgba(156,39,176,0.18) 65%,
-          rgba(255,243,204,0) 72%
-        );
-      z-index: 1;
-    }
+   
 
     .diya {
       font-size: 11rem;
@@ -108,15 +93,41 @@
         min-height: 420px;
       }
 
-      .visual-box::before {
-        width: 340px;
-        height: 340px;
-      }
+      
 
       .diya {
         font-size: 8rem;
       }
     }
+    /* Rangoli image */
+.rangoli {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  opacity: 0.55;
+  z-index: 1;
+}
+
+/* Diya stays on top */
+.diya {
+  font-size: 11rem;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 20px 30px rgba(255,140,0,0.35));
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .rangoli {
+    width: 360px;
+    height: 360px;
+  }
+
+  .diya {
+    font-size: 8rem;
+  }
+}
+
   </style>
 </head>
 
