@@ -5,14 +5,9 @@
   <title>Diwali – Festival of Lights</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Global site styles -->
   <link rel="stylesheet" href="../css/style.css">
 
   <style>
-    /* ===============================
-       Diwali Page Layout
-    =============================== */
-
     .diwali-layout {
       display: grid;
       grid-template-columns: 1.6fr 1fr;
@@ -20,49 +15,33 @@
       align-items: center;
     }
 
-    /* ===============================
-       LEFT : Visual Box
-    =============================== */
-
     .visual-box {
       background: #fff3cc;
       border-radius: 26px;
       min-height: 600px;
-      position: relative;
-      overflow: hidden;
-
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    /* Rangoli image (background layer) */
+    /* Rangoli SVG */
     .rangoli {
       position: absolute;
       width: 520px;
       height: 520px;
-      object-fit: contain;
-      opacity: 0.45;
-
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-
+      opacity: 0.65;
       z-index: 1;
-      pointer-events: none;
     }
 
-    /* Diya (foreground) */
+    /* Diya on top */
     .diya {
       font-size: 11rem;
       position: relative;
       z-index: 2;
-      filter: drop-shadow(0 20px 30px rgba(255, 140, 0, 0.35));
+      filter: drop-shadow(0 20px 30px rgba(255,140,0,0.35));
     }
-
-    /* ===============================
-       RIGHT : Content
-    =============================== */
 
     .diwali-content h2 {
       font-size: 3rem;
@@ -77,49 +56,34 @@
       max-width: 480px;
     }
 
-    /* Countdown box */
     .countdown-box {
       margin-top: 28px;
       padding: 16px 26px;
-      background: #ffffff;
+      background: white;
       border-radius: 16px;
       box-shadow: 0 12px 28px rgba(0,0,0,0.14);
-
       font-weight: 600;
       color: #d84315;
-      font-size: 1rem;
-
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       white-space: nowrap;
     }
 
-    /* Back button */
     .back-btn {
       margin-top: 44px;
       display: inline-block;
       padding: 14px 22px;
       background: linear-gradient(135deg, #ff9800, #ff5722);
-      color: #ffffff;
+      color: #fff;
       border-radius: 14px;
       text-decoration: none;
       font-weight: 500;
-      font-size: 1rem;
     }
-
-    /* ===============================
-       Responsive
-    =============================== */
 
     @media (max-width: 768px) {
       .diwali-layout {
         grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .visual-box {
-        min-height: 420px;
       }
 
       .rangoli {
@@ -137,16 +101,15 @@
 <body>
 
   <div class="container">
-
     <div class="diwali-layout">
 
-      <!-- LEFT : Visual -->
+      <!-- LEFT -->
       <div class="visual-box">
-        <img src="../images/rangoli.svg" class="rangoli" alt="Rangoli design">
+        <img src="../images/rangoli.svg" class="rangoli" alt="Rangoli">
         <div class="diya">🪔</div>
       </div>
 
-      <!-- RIGHT : Content -->
+      <!-- RIGHT -->
       <div class="diwali-content">
         <h2>Diwali</h2>
 
@@ -160,35 +123,22 @@
           ⏳ <span id="countdown">Loading…</span>
         </div>
 
-        <br>
-
         <a href="../index.html" class="back-btn">← Back to Festivals</a>
       </div>
 
     </div>
-
   </div>
 
-  <!-- ===============================
-       Countdown Script
-  =============================== -->
   <script>
     const diwaliDate = new Date("Nov 01, 2026 00:00:00").getTime();
     const el = document.getElementById("countdown");
 
     setInterval(() => {
-      const now = new Date().getTime();
-      const diff = diwaliDate - now;
-
-      if (diff <= 0) {
-        el.textContent = "🎉 Happy Diwali!";
-        return;
-      }
-
-      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const m = Math.floor((diff / (1000 * 60)) % 60);
-
+      const diff = diwaliDate - Date.now();
+      if (diff <= 0) return el.textContent = "🎉 Happy Diwali!";
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor(diff / 3600000) % 24;
+      const m = Math.floor(diff / 60000) % 60;
       el.textContent = `${d}d ${h}h ${m}m`;
     }, 1000);
   </script>
