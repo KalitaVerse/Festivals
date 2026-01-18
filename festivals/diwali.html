@@ -5,10 +5,13 @@
   <title>Diwali – Festival of Lights</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Global site styles -->
   <link rel="stylesheet" href="../css/style.css">
 
   <style>
-    /* ===== Diwali Page Layout ===== */
+    /* ===============================
+       Diwali Page Layout
+    =============================== */
 
     .diwali-layout {
       display: grid;
@@ -17,29 +20,50 @@
       align-items: center;
     }
 
-    /* LEFT: VISUAL BOX */
+    /* ===============================
+       LEFT : Visual Box
+    =============================== */
+
     .visual-box {
       background: #fff3cc;
       border-radius: 26px;
       min-height: 600px;
+      position: relative;
+      overflow: hidden;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;     /* REQUIRED for rangoli */
-      overflow: hidden;
     }
 
-    /* RANGOLI (behind diya) */
-   
+    /* Rangoli image (background layer) */
+    .rangoli {
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      object-fit: contain;
+      opacity: 0.45;
 
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Diya (foreground) */
     .diya {
       font-size: 11rem;
       position: relative;
-      z-index: 2; /* keeps diya above rangoli */
-      filter: drop-shadow(0 20px 30px rgba(255,140,0,0.35));
+      z-index: 2;
+      filter: drop-shadow(0 20px 30px rgba(255, 140, 0, 0.35));
     }
 
-    /* RIGHT: CONTENT */
+    /* ===============================
+       RIGHT : Content
+    =============================== */
+
     .diwali-content h2 {
       font-size: 3rem;
       color: #e65100;
@@ -53,19 +77,21 @@
       max-width: 480px;
     }
 
-    /* COUNTDOWN */
+    /* Countdown box */
     .countdown-box {
       margin-top: 28px;
       padding: 16px 26px;
       background: #ffffff;
       border-radius: 16px;
       box-shadow: 0 12px 28px rgba(0,0,0,0.14);
+
       font-weight: 600;
       color: #d84315;
+      font-size: 1rem;
+
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      font-size: 1rem;
+      gap: 8px;
       white-space: nowrap;
     }
 
@@ -82,7 +108,10 @@
       font-size: 1rem;
     }
 
-    /* Responsive */
+    /* ===============================
+       Responsive
+    =============================== */
+
     @media (max-width: 768px) {
       .diwali-layout {
         grid-template-columns: 1fr;
@@ -93,41 +122,15 @@
         min-height: 420px;
       }
 
-      
+      .rangoli {
+        width: 360px;
+        height: 360px;
+      }
 
       .diya {
         font-size: 8rem;
       }
     }
-    /* Rangoli image */
-.rangoli {
-  position: absolute;
-  width: 520px;
-  height: 520px;
-  opacity: 0.55;
-  z-index: 1;
-}
-
-/* Diya stays on top */
-.diya {
-  font-size: 11rem;
-  position: relative;
-  z-index: 2;
-  filter: drop-shadow(0 20px 30px rgba(255,140,0,0.35));
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .rangoli {
-    width: 360px;
-    height: 360px;
-  }
-
-  .diya {
-    font-size: 8rem;
-  }
-}
-
   </style>
 </head>
 
@@ -137,13 +140,13 @@
 
     <div class="diwali-layout">
 
-      <!-- LEFT -->
+      <!-- LEFT : Visual -->
       <div class="visual-box">
-  <img src="../images/rangoli.svg" class="rangoli" alt="Rangoli">
-  <div class="diya">🪔</div>
-</div>
+        <img src="../images/rangoli.svg" class="rangoli" alt="Rangoli design">
+        <div class="diya">🪔</div>
+      </div>
 
-      <!-- RIGHT -->
+      <!-- RIGHT : Content -->
       <div class="diwali-content">
         <h2>Diwali</h2>
 
@@ -166,7 +169,9 @@
 
   </div>
 
-  <!-- Countdown Script -->
+  <!-- ===============================
+       Countdown Script
+  =============================== -->
   <script>
     const diwaliDate = new Date("Nov 01, 2026 00:00:00").getTime();
     const el = document.getElementById("countdown");
