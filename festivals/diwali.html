@@ -5,54 +5,57 @@
   <title>Diwali – Festival of Lights</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Reuse main site styles -->
   <link rel="stylesheet" href="../css/style.css">
 
   <style>
-    /* ===== Diwali Page Layout ===== */
+    /* ===== Diwali Page ===== */
 
-    .diwali-page {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 32px;
-      align-items: center;
-    }
-
-    /* ===== LEFT: VISUAL AREA ===== */
-    .visual-area {
+    .diwali-wrapper {
       position: relative;
-      background: linear-gradient(135deg, #fff8e1, #ffecb3);
+      padding: 40px;
       border-radius: 22px;
-      padding: 30px;
-      min-height: 420px;
-      overflow: hidden;
+      background: #fffaf3;
+      min-height: 520px;
     }
 
-    /* Fireworks (right side only) */
+    /* Title + Countdown */
+    .diwali-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .diwali-header h2 {
+      font-size: 2.4rem;
+      color: #e65100;
+    }
+
+    .countdown-box {
+      padding: 12px 18px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+      font-weight: 600;
+      color: #d84315;
+    }
+
+    /* Fireworks (lines / accents) */
     .firework {
       position: absolute;
       font-size: 2rem;
-      opacity: 0.6;
+      opacity: 0.4;
     }
 
-    .fw1 { top: 30px; right: 30px; }
-    .fw2 { top: 120px; right: 10px; }
-    .fw3 { bottom: 60px; right: 25px; }
-
-    /* Fireworks box */
-    .cracker-box {
-      position: absolute;
-      bottom: 25px;
-      left: 25px;
-      font-size: 2.6rem;
-      opacity: 0.75;
-    }
+    .fw-top { top: 10px; right: 80px; }
+    .fw-right { top: 120px; right: 20px; }
+    .fw-bottom { bottom: 120px; right: 60px; }
 
     /* Deepak */
     .deepak {
-      font-size: 6.5rem;
       text-align: center;
-      margin-top: 80px;
+      font-size: 7rem;
+      margin-top: 60px;
     }
 
     /* Rangoli dots */
@@ -65,51 +68,32 @@
       opacity: 0.7;
     }
 
-    /* ===== RIGHT: INFO AREA ===== */
-    .diwali-info h2 {
-      font-size: 2.6rem;
-      color: #e65100;
-      margin-bottom: 10px;
-    }
-
-    .diwali-info p {
-      font-size: 1.05rem;
-      line-height: 1.7;
-      color: #4e342e;
-      max-width: 420px;
-    }
-
-    .countdown-card {
-      margin-top: 18px;
-      padding: 14px 20px;
-      background: #ffffff;
-      border-radius: 14px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-      font-weight: 600;
-      color: #d84315;
-      display: inline-block;
+    /* Fireworks box */
+    .cracker-box {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      font-size: 2.8rem;
+      opacity: 0.75;
     }
 
     /* Back button */
     .back-btn {
-      margin-top: 32px;
+      margin-top: 40px;
       display: inline-block;
       padding: 12px 18px;
       background: linear-gradient(135deg, #ff9800, #ff5722);
-      color: #ffffff;
+      color: white;
       border-radius: 12px;
       text-decoration: none;
       font-weight: 500;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
-      .diwali-page {
-        grid-template-columns: 1fr;
-      }
-
-      .deepak {
-        margin-top: 50px;
+      .diwali-header {
+        flex-direction: column;
+        gap: 14px;
+        align-items: flex-start;
       }
     }
   </style>
@@ -119,48 +103,35 @@
 
   <div class="container">
 
-    <div class="diwali-page">
+    <div class="diwali-wrapper">
 
-      <!-- LEFT: VISUAL -->
-      <div class="visual-area">
+      <!-- Fireworks accents -->
+      <span class="firework fw-top">🎆</span>
+      <span class="firework fw-right">🎇</span>
+      <span class="firework fw-bottom">🎆</span>
 
-        <!-- Fireworks -->
-        <span class="firework fw1">🎆</span>
-        <span class="firework fw2">🎇</span>
-        <span class="firework fw3">🎆</span>
-
-        <!-- Fireworks box -->
-        <span class="cracker-box">🧨</span>
-
-        <!-- Rangoli -->
-        <div class="rangoli">
-          <span style="top:62%; left:42%"></span>
-          <span style="top:66%; left:50%"></span>
-          <span style="top:62%; left:58%"></span>
-          <span style="top:72%; left:46%"></span>
-          <span style="top:72%; left:54%"></span>
-        </div>
-
-        <!-- Deepak -->
-        <div class="deepak">🪔</div>
-
-      </div>
-
-      <!-- RIGHT: INFO -->
-      <div class="diwali-info">
+      <!-- Header -->
+      <div class="diwali-header">
         <h2>Diwali</h2>
-
-        <p>
-          Diwali, the Festival of Lights, celebrates the victory of light over
-          darkness and good over evil. Homes glow with diyas, rangoli decorates
-          entrances, and fireworks brighten the night sky.
-        </p>
-
-        <div class="countdown-card">
-          Diwali Countdown:
-          <span id="countdown">Loading…</span>
+        <div class="countdown-box">
+          Countdown: <span id="countdown">Loading…</span>
         </div>
       </div>
+
+      <!-- Rangoli -->
+      <div class="rangoli">
+        <span style="top:60%; left:46%"></span>
+        <span style="top:64%; left:50%"></span>
+        <span style="top:60%; left:54%"></span>
+        <span style="top:70%; left:48%"></span>
+        <span style="top:70%; left:52%"></span>
+      </div>
+
+      <!-- Deepak -->
+      <div class="deepak">🪔</div>
+
+      <!-- Fireworks box -->
+      <div class="cracker-box">🧨</div>
 
     </div>
 
@@ -168,25 +139,24 @@
 
   </div>
 
-  <!-- Countdown Script -->
   <script>
     const diwaliDate = new Date("Nov 01, 2026 00:00:00").getTime();
-    const countdownEl = document.getElementById("countdown");
+    const el = document.getElementById("countdown");
 
     setInterval(() => {
       const now = new Date().getTime();
       const diff = diwaliDate - now;
 
       if (diff <= 0) {
-        countdownEl.textContent = "🎉 Happy Diwali!";
+        el.textContent = "🎉 Happy Diwali!";
         return;
       }
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / (1000 * 60)) % 60);
 
-      countdownEl.textContent = `${days} days ${hours}h ${minutes}m`;
+      el.textContent = `${d} days ${h}h ${m}m`;
     }, 1000);
   </script>
 
