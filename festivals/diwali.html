@@ -27,14 +27,19 @@
     }
 
     /* ✅ RANGOLI PNG (WORKS ON GITHUB PAGES) */
-    .rangoli {
-      position: absolute;
-      width: 520px;
-      height: 520px;
-      opacity: 0.55;
-      z-index: 1;
-      filter: blur(0.4px);
-    }
+     /* Bigger Rangoli */
+.rangoli {
+  position: absolute;
+  width: 680px;      /* ⬅️ BIGGER */
+  height: 680px;     /* ⬅️ BIGGER */
+  opacity: 0.55;
+  z-index: 1;
+  filter: blur(0.6px);
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
 
     /* Diya on top */
     .diya {
@@ -82,11 +87,17 @@
       font-weight: 500;
     }
 
-    @media (max-width: 768px) {
-      .diwali-layout {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
+   @media (max-width: 768px) {
+  .rangoli {
+    width: 460px;
+    height: 460px;
+  }
+
+  .diya {
+    font-size: 8rem;
+  }
+}
+
 
       .rangoli {
         width: 360px;
