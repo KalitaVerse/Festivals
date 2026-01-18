@@ -29,14 +29,12 @@
     /* ✅ RANGOLI PNG — FILLS ~80% OF YELLOW BOX */
   .rangoli {
   position: absolute;
-  width: 90%;
-  height: 90%;
-  max-width: none;
-  max-height: none;
+  width: 100%;
+  height: 100%;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0.6;
+  transform: translate(-50%, -50%) scale(1.35); /* 👈 KEY */
+  opacity: 0.65;
   z-index: 1;
   object-fit: contain;
   pointer-events: none;
@@ -91,16 +89,16 @@
     }
 
     /* 📱 Mobile */
-    @media (max-width: 768px) {
+  @media (max-width: 768px) {
   .rangoli {
-    width: 95%;
-    height: 95%;
+    transform: translate(-50%, -50%) scale(1.15);
   }
 
   .diya {
     font-size: 8rem;
   }
 }
+
 
 
     }
