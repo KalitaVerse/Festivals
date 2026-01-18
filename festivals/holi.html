@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Holi – Festival of Colors</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    /* Holi-only colourful background */
+body.holi-page {
+  background:
+    radial-gradient(circle at 10% 20%, rgba(255, 64, 129, 0.35), transparent 40%),
+    radial-gradient(circle at 80% 25%, rgba(124, 77, 255, 0.35), transparent 45%),
+    radial-gradient(circle at 30% 80%, rgba(255, 235, 59, 0.35), transparent 45%),
+    radial-gradient(circle at 75% 75%, rgba(76, 175, 80, 0.35), transparent 50%),
+    linear-gradient(135deg, #f3e5f5, #e1bee7);
+}
+
+    .holi-layout {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    /* LEFT VISUAL */
+    .visual-box {
+      background: #f3e5f5;
+      border-radius: 26px;
+      min-height: 600px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Color splashes */
+    .color-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 30%, #ff4081 0%, transparent 45%),
+        radial-gradient(circle at 70% 35%, #7c4dff 0%, transparent 50%),
+        radial-gradient(circle at 45% 70%, #ffeb3b 0%, transparent 55%),
+        radial-gradient(circle at 80% 75%, #4caf50 0%, transparent 50%);
+      opacity: 0.45;
+    }
+
+    /* Center icon */
+    .holi-icon {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 9rem;
+      z-index: 2;
+      filter: drop-shadow(0 18px 28px rgba(0,0,0,0.25));
+    }
+
+    /* RIGHT CONTENT */
+    .holi-content h2 {
+      font-size: 3rem;
+      color: #6a1b9a;
+      margin-bottom: 18px;
+    }
+
+    .holi-content p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #4a148c;
+      max-width: 480px;
+    }
+
+    .back-btn {
+      margin-top: 44px;
+      display: inline-block;
+      padding: 14px 22px;
+      background: linear-gradient(135deg, #8e24aa, #ec407a);
+      color: #fff;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body class="holi-page">
+
+
+  <div class="container">
+    <div class="holi-layout">
+
+      <!-- LEFT -->
+      <div class="visual-box">
+        <div class="color-bg"></div>
+        <div class="holi-icon">🎨</div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="holi-content">
+        <h2>Holi</h2>
+
+        <p>
+          Holi, the Festival of Colors, marks the arrival of spring and celebrates
+          joy, unity, and the triumph of good over evil. Streets fill with vibrant
+          colors as people come together to dance, laugh, and forget differences.
+        </p>
+
+        <a href="../index.html" class="back-btn">← Back to Festivals</a>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
