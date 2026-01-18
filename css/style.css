@@ -7,19 +7,20 @@
 }
 
 /* Background */
+/* Background */
 body {
   min-height: 100vh;
   background: radial-gradient(circle at top,
-    #fff3e0,
+    #fff8e1,
     #ffe0b2,
-    #ffccbc,
-    #f8bbd0,
-    #e1bee7
+    #ffd180,
+    #ffecb3
   );
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 
 /* Main container */
 .container {
