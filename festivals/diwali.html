@@ -27,18 +27,21 @@
     }
 
     /* ✅ RANGOLI PNG — FILLS ~80% OF YELLOW BOX */
-   .rangoli {
+  .rangoli {
   position: absolute;
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 90%;
+  max-width: none;
+  max-height: none;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0.65;
+  opacity: 0.6;
   z-index: 1;
   object-fit: contain;
   pointer-events: none;
 }
+
 
 
     /* Diya on top */
@@ -88,16 +91,17 @@
     }
 
     /* 📱 Mobile */
-    @@media (max-width: 768px) {
+    @media (max-width: 768px) {
   .rangoli {
-    width: 85%;
-    height: 85%;
+    width: 95%;
+    height: 95%;
   }
 
   .diya {
     font-size: 8rem;
   }
 }
+
 
     }
   </style>
