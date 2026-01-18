@@ -16,41 +16,45 @@
     }
 
     .visual-box {
-  background: #fff3cc;
-  border-radius: 26px;
-  min-height: 600px;
-  position: relative;
-  overflow: hidden;
-}
+      background: #fff3cc;
+      border-radius: 26px;
+      min-height: 600px;
+      position: relative;
+      overflow: hidden;
+    }
 
+    /* Rangoli */
+    .rangoli {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1.6);
+      opacity: 0.65;
+      z-index: 1;
+      object-fit: contain;
+      pointer-events: none;
+    }
 
-    /* ✅ RANGOLI PNG — FILLS ~80% OF YELLOW BOX */
-  .rangoli {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1.6); /* 👈 KEY */
-  opacity: 0.65;
-  z-index: 1;
-  object-fit: contain;
-  pointer-events: none;
-}
-
-
-
-    /* Diya on top */
+    /* Diya wrapper (true center) */
     .diya {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 8.5rem;
-  z-index: 2;
-  filter: drop-shadow(0 20px 30px rgba(255,140,0,0.35));
-}
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      pointer-events: none;
+    }
 
+    /* Emoji optical correction */
+    .diya span {
+      font-size: 8.5rem;
+      display: inline-block;
+      line-height: 1;
+      transform: translateY(14px); /* 👈 IMPORTANT */
+      filter: drop-shadow(0 20px 30px rgba(255,140,0,0.35));
+    }
 
     .diwali-content h2 {
       font-size: 3rem;
@@ -90,20 +94,16 @@
       font-weight: 500;
     }
 
-    /* 📱 Mobile */
-  @media (max-width: 768px) {
-  .rangoli {
-    transform: translate(-50%, -50%) scale(1.4);
-  }
+    /* Mobile */
+    @media (max-width: 768px) {
+      .rangoli {
+        transform: translate(-50%, -50%) scale(1.4);
+      }
 
-  .diya {
-    font-size: 6.5rem;
-  }
-}
-
-
-
-
+      .diya span {
+        font-size: 6.5rem;
+        transform: translateY(10px);
+      }
     }
   </style>
 </head>
@@ -116,7 +116,7 @@
       <!-- LEFT -->
       <div class="visual-box">
         <img src="../images/rangoli.png" class="rangoli" alt="Rangoli">
-        <div class="diya">🪔</div>
+        <div class="diya"><span>🪔</span></div>
       </div>
 
       <!-- RIGHT -->
@@ -140,43 +140,35 @@
   </div>
 
   <script>
-  // ✅ Diwali dates (update once every few years)
-  const diwaliDates = {
-    2025: "Oct 20, 2025 00:00:00",
-    2026: "Nov 01, 2026 00:00:00",
-    2027: "Oct 29, 2027 00:00:00",
-    2028: "Oct 17, 2028 00:00:00",
-    2029: "Nov 07, 2029 00:00:00"
-  };
+    const diwaliDates = {
+      2025: "Oct 20, 2025 00:00:00",
+      2026: "Nov 01, 2026 00:00:00",
+      2027: "Oct 29, 2027 00:00:00",
+      2028: "Oct 17, 2028 00:00:00",
+      2029: "Nov 07, 2029 00:00:00"
+    };
 
-  const el = document.getElementById("countdown");
-  const now = new Date();
-  let year = now.getFullYear();
+    const el = document.getElementById("countdown");
+    let year = new Date().getFullYear();
+    let targetDate = new Date(diwaliDates[year]).getTime();
 
-  // Pick current year's Diwali
-  let targetDate = new Date(diwaliDates[year]).getTime();
-
-  // If Diwali already passed → move to next year
-  if (Date.now() > targetDate) {
-    year++;
-    targetDate = new Date(diwaliDates[year]).getTime();
-  }
-
-  setInterval(() => {
-    const diff = targetDate - Date.now();
-
-    if (diff <= 0) {
-      el.textContent = "🎉 Happy Diwali!";
-      return;
+    if (Date.now() > targetDate) {
+      year++;
+      targetDate = new Date(diwaliDates[year]).getTime();
     }
 
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor(diff / 3600000) % 24;
-    const m = Math.floor(diff / 60000) % 60;
-
-    el.textContent = `${d}d ${h}h ${m}m`;
-  }, 1000);
-</script>
+    setInterval(() => {
+      const diff = targetDate - Date.now();
+      if (diff <= 0) {
+        el.textContent = "🎉 Happy Diwali!";
+        return;
+      }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor(diff / 3600000) % 24;
+      const m = Math.floor(diff / 60000) % 60;
+      el.textContent = `${d}d ${h}h ${m}m`;
+    }, 1000);
+  </script>
 
 </body>
 </html>
