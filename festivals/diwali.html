@@ -7,87 +7,90 @@
 
   <link rel="stylesheet" href="../css/style.css">
 
- <style>
-  /* ===== Diwali Page Layout ===== */
+  <style>
+    /* ===== Diwali Page Layout ===== */
 
-  .diwali-layout {
-    display: grid;
-    grid-template-columns: 1.6fr 1fr; /* MORE space to visual */
-    gap: 64px;                        /* bigger breathing space */
-    align-items: center;
-  }
-
-  /* LEFT: VISUAL BOX */
-  .visual-box {
-    background: #fff3cc;
-    border-radius: 26px;
-    min-height: 600px;               /* MUCH BIGGER BOX */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .diya {
-    font-size: 11rem;                /* BIG HERO DIYA */
-    filter: drop-shadow(0 20px 30px rgba(255,140,0,0.35));
-  }
-
-  /* RIGHT: CONTENT */
-  .diwali-content h2 {
-    font-size: 3rem;                 /* bigger heading */
-    color: #e65100;
-    margin-bottom: 18px;
-  }
-
-  .diwali-content p {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    color: #4e342e;
-    max-width: 480px;
-  }
-
-  .countdown-box {
-    margin-top: 26px;
-    padding: 16px 24px;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 12px 26px rgba(0,0,0,0.14);
-    font-weight: 600;
-    color: #d84315;
-    display: inline-block;
-    font-size: 1rem;
-  }
-
-  /* Back button */
-  .back-btn {
-    margin-top: 44px;
-    display: inline-block;
-    padding: 14px 22px;
-    background: linear-gradient(135deg, #ff9800, #ff5722);
-    color: #ffffff;
-    border-radius: 14px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1rem;
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
     .diwali-layout {
-      grid-template-columns: 1fr;
-      gap: 40px;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 64px;
+      align-items: center;
     }
 
+    /* LEFT: VISUAL BOX */
     .visual-box {
-      min-height: 420px;
+      background: #fff3cc;
+      border-radius: 26px;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .diya {
-      font-size: 8rem;
+      font-size: 11rem;
+      filter: drop-shadow(0 20px 30px rgba(255,140,0,0.35));
     }
-  }
-</style>
 
+    /* RIGHT: CONTENT */
+    .diwali-content h2 {
+      font-size: 3rem;
+      color: #e65100;
+      margin-bottom: 18px;
+    }
+
+    .diwali-content p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #4e342e;
+      max-width: 480px;
+    }
+
+    /* FIXED COUNTDOWN */
+    .countdown-box {
+      margin-top: 28px;
+      padding: 16px 26px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.14);
+      font-weight: 600;
+      color: #d84315;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 1rem;
+      white-space: nowrap;
+    }
+
+    /* Back button */
+    .back-btn {
+      margin-top: 44px;
+      display: inline-block;
+      padding: 14px 22px;
+      background: linear-gradient(135deg, #ff9800, #ff5722);
+      color: #ffffff;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .diwali-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .visual-box {
+        min-height: 420px;
+      }
+
+      .diya {
+        font-size: 8rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -96,12 +99,12 @@
 
     <div class="diwali-layout">
 
-      <!-- LEFT: BIG VISUAL BOX -->
+      <!-- LEFT -->
       <div class="visual-box">
         <div class="diya">🪔</div>
       </div>
 
-      <!-- RIGHT: TEXT + COUNTDOWN -->
+      <!-- RIGHT -->
       <div class="diwali-content">
         <h2>Diwali</h2>
 
@@ -112,8 +115,7 @@
         </p>
 
         <div class="countdown-box">
-          Diwali Countdown:
-          <span id="countdown">Loading…</span>
+          ⏳ <span id="countdown">Loading…</span>
         </div>
 
         <br>
@@ -143,7 +145,7 @@
       const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const m = Math.floor((diff / (1000 * 60)) % 60);
 
-      el.textContent = `${d} days ${h}h ${m}m`;
+      el.textContent = `${d}d ${h}h ${m}m`;
     }, 1000);
   </script>
 
