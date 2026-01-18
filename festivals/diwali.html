@@ -10,20 +10,20 @@
   <style>
     /* ===== Diwali Page ===== */
 
-    .diwali-wrapper {
-      position: relative;
+    .diwali-page {
       padding: 40px;
+      background: #fffdf8;
       border-radius: 22px;
-      background: #fffaf3;
+      position: relative;
       min-height: 520px;
     }
 
-    /* Title + Countdown */
+    /* Header */
     .diwali-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 30px;
+      margin-bottom: 50px;
     }
 
     .diwali-header h2 {
@@ -40,46 +40,55 @@
       color: #d84315;
     }
 
-    /* Fireworks (lines / accents) */
-    .firework {
-      position: absolute;
-      font-size: 2rem;
-      opacity: 0.4;
-    }
-
-    .fw-top { top: 10px; right: 80px; }
-    .fw-right { top: 120px; right: 20px; }
-    .fw-bottom { bottom: 120px; right: 60px; }
-
-    /* Deepak */
-    .deepak {
+    /* Center Deepak */
+    .center-area {
       text-align: center;
-      font-size: 7rem;
-      margin-top: 60px;
+      margin-top: 20px;
     }
 
-    /* Rangoli dots */
+    .deepak {
+      font-size: 7rem;
+      margin-bottom: 20px;
+    }
+
+    /* Rangoli (structured dots) */
+    .rangoli {
+      display: grid;
+      grid-template-columns: repeat(5, 14px);
+      gap: 10px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
     .rangoli span {
-      position: absolute;
-      width: 10px;
-      height: 10px;
+      width: 14px;
+      height: 14px;
       background: #ff7043;
       border-radius: 50%;
-      opacity: 0.7;
+      opacity: 0.75;
     }
 
-    /* Fireworks box */
+    /* Fireworks accents */
+    .fireworks {
+      position: absolute;
+      top: 120px;
+      right: 40px;
+      font-size: 1.8rem;
+      opacity: 0.35;
+    }
+
+    /* Firecracker box */
     .cracker-box {
       position: absolute;
       bottom: 30px;
       left: 30px;
-      font-size: 2.8rem;
-      opacity: 0.75;
+      font-size: 2.5rem;
+      opacity: 0.7;
     }
 
     /* Back button */
     .back-btn {
-      margin-top: 40px;
+      margin-top: 50px;
       display: inline-block;
       padding: 12px 18px;
       background: linear-gradient(135deg, #ff9800, #ff5722);
@@ -92,7 +101,7 @@
     @media (max-width: 768px) {
       .diwali-header {
         flex-direction: column;
-        gap: 14px;
+        gap: 16px;
         align-items: flex-start;
       }
     }
@@ -103,12 +112,10 @@
 
   <div class="container">
 
-    <div class="diwali-wrapper">
+    <div class="diwali-page">
 
-      <!-- Fireworks accents -->
-      <span class="firework fw-top">🎆</span>
-      <span class="firework fw-right">🎇</span>
-      <span class="firework fw-bottom">🎆</span>
+      <!-- Fireworks accent -->
+      <div class="fireworks">🎆 🎇</div>
 
       <!-- Header -->
       <div class="diwali-header">
@@ -118,19 +125,18 @@
         </div>
       </div>
 
-      <!-- Rangoli -->
-      <div class="rangoli">
-        <span style="top:60%; left:46%"></span>
-        <span style="top:64%; left:50%"></span>
-        <span style="top:60%; left:54%"></span>
-        <span style="top:70%; left:48%"></span>
-        <span style="top:70%; left:52%"></span>
+      <!-- Center Visual -->
+      <div class="center-area">
+        <div class="deepak">🪔</div>
+
+        <div class="rangoli">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
       </div>
 
-      <!-- Deepak -->
-      <div class="deepak">🪔</div>
-
-      <!-- Fireworks box -->
+      <!-- Firecracker box -->
       <div class="cracker-box">🧨</div>
 
     </div>
@@ -139,6 +145,7 @@
 
   </div>
 
+  <!-- Countdown -->
   <script>
     const diwaliDate = new Date("Nov 01, 2026 00:00:00").getTime();
     const el = document.getElementById("countdown");
@@ -154,9 +161,7 @@
 
       const d = Math.floor(diff / (1000 * 60 * 60 * 24));
       const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const m = Math.floor((diff / (1000 * 60)) % 60);
-
-      el.textContent = `${d} days ${h}h ${m}m`;
+      el.textContent = `${d} days ${h}h`;
     }, 1000);
   </script>
 
