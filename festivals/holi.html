@@ -9,14 +9,14 @@
 
   <style>
     /* Holi-only colourful background */
-body.holi-page {
-  background:
-    radial-gradient(circle at 10% 20%, rgba(255, 64, 129, 0.60), transparent 40%),
-    radial-gradient(circle at 80% 25%, rgba(124, 77, 255, 0.60), transparent 45%),
-    radial-gradient(circle at 30% 80%, rgba(255, 235, 59, 0.60), transparent 45%),
-    radial-gradient(circle at 75% 75%, rgba(76, 175, 80, 0.60), transparent 50%),
-    linear-gradient(135deg, #f3e5f5, #e1bee7);
-}
+    body.holi-page {
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255, 64, 129, 0.60), transparent 40%),
+        radial-gradient(circle at 80% 25%, rgba(124, 77, 255, 0.60), transparent 45%),
+        radial-gradient(circle at 30% 80%, rgba(255, 235, 59, 0.60), transparent 45%),
+        radial-gradient(circle at 75% 75%, rgba(76, 175, 80, 0.60), transparent 50%),
+        linear-gradient(135deg, #f3e5f5, #e1bee7);
+    }
 
     .holi-layout {
       display: grid;
@@ -44,17 +44,19 @@ body.holi-page {
         radial-gradient(circle at 45% 70%, #ffeb3b 0%, transparent 55%),
         radial-gradient(circle at 80% 75%, #4caf50 0%, transparent 50%);
       opacity: 0.45;
+      z-index: 1;
     }
 
-    /* Center icon */
-    .holi-icon {
+    /* Holi image (replaces emoji) */
+    .holi-image {
       position: absolute;
       inset: 0;
-      display: grid;
-      place-items: center;
-      font-size: 9rem;
+      margin: auto;
+      width: 55%;
+      max-width: 320px;
       z-index: 2;
       filter: drop-shadow(0 18px 28px rgba(0,0,0,0.25));
+      pointer-events: none;
     }
 
     /* RIGHT CONTENT */
@@ -69,6 +71,21 @@ body.holi-page {
       line-height: 1.8;
       color: #4a148c;
       max-width: 480px;
+    }
+
+    /* Countdown */
+    .countdown-box {
+      margin-top: 28px;
+      padding: 16px 26px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.14);
+      font-weight: 600;
+      color: #6a1b9a;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
     }
 
     .back-btn {
@@ -86,14 +103,13 @@ body.holi-page {
 
 <body class="holi-page">
 
-
   <div class="container">
     <div class="holi-layout">
 
       <!-- LEFT -->
       <div class="visual-box">
         <div class="color-bg"></div>
-        <div class="holi-icon">🎨</div>
+        <img src="../images/holi.png" class="holi-image" alt="Holi colors">
       </div>
 
       <!-- RIGHT -->
@@ -106,11 +122,50 @@ body.holi-page {
           colors as people come together to dance, laugh, and forget differences.
         </p>
 
+        <div class="countdown-box">
+          ⏳ <span id="countdown">Loading…</span>
+        </div>
+
         <a href="../index.html" class="back-btn">← Back to Festivals</a>
       </div>
 
     </div>
   </div>
+
+  <script>
+    /* Holi dates (approx – can be extended later) */
+    const holiDates = {
+      2025: "Mar 14, 2025 00:00:00",
+      2026: "Mar 04, 2026 00:00:00",
+      2027: "Mar 23, 2027 00:00:00",
+      2028: "Mar 11, 2028 00:00:00",
+      2029: "Mar 30, 2029 00:00:00"
+    };
+
+    const el = document.getElementById("countdown");
+    let year = new Date().getFullYear();
+    let targetDate = new Date(holiDates[year]).getTime();
+
+    if (Date.now() > targetDate) {
+      year++;
+      targetDate = new Date(holiDates[year]).getTime();
+    }
+
+    setInterval(() => {
+      const diff = targetDate - Date.now();
+
+      if (diff <= 0) {
+        el.textContent = "🎉 Happy Holi!";
+        return;
+      }
+
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor(diff / 3600000) % 24;
+      const m = Math.floor(diff / 60000) % 60;
+
+      el.textContent = `${d}d ${h}h ${m}m`;
+    }, 1000);
+  </script>
 
 </body>
 </html>
