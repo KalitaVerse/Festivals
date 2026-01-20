@@ -8,93 +8,91 @@
   <link rel="stylesheet" href="../css/style.css">
 
   <style>
-    /* PAGE BACKGROUND — NATURE THEME */
+    /* BACKGROUND — SOFT NATURE */
     body {
       background:
-        radial-gradient(circle at 20% 20%, rgba(139, 195, 74, 0.65), transparent 45%),
-        radial-gradient(circle at 80% 30%, rgba(76, 175, 80, 0.65), transparent 45%),
-        radial-gradient(circle at 40% 85%, rgba(205, 220, 57, 0.65), transparent 50%),
+        radial-gradient(circle at 20% 20%, rgba(139,195,74,0.55), transparent 45%),
+        radial-gradient(circle at 80% 30%, rgba(76,175,80,0.55), transparent 45%),
         linear-gradient(135deg, #e8f5e9, #f1f8e9);
     }
 
     /* GRID */
     .bihu-layout {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 48px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
 
-
-    /* CARD */
+    /* CARD — HORIZONTAL */
     .bihu-card {
-  background: #ffffff;
-  border-radius: 28px;
-  padding: 32px 48px; /* ⬅ less top/bottom, more left/right */
-  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
-  text-align: center;
-  max-width: 560px;   /* ⬅ wider card */
-  margin: 0 auto;
-}
+      background: #fff;
+      border-radius: 26px;
+      padding: 28px 36px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      align-items: center;
+      gap: 36px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+    }
 
-
-    /* BOTTOM CARD */
+    /* FULL WIDTH CARD */
     .bihu-card.full {
-  grid-column: 1 / -1;
-  max-width: 780px; /* ⬅ wider bottom card */
-  margin: 0 auto;
-}
+      grid-column: 1 / -1;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
 
-
-    /* IMAGE PLACEHOLDER */
+    /* IMAGE */
     .bihu-image {
-  width: 85%;
-  max-width: 320px;
-  margin: 0 auto 18px; /* ⬅ less bottom gap */
-  display: block;
-  filter: drop-shadow(0 16px 24px rgba(0,0,0,0.16));
-}
-
+      width: 100%;
+      max-width: 220px;
+      filter: drop-shadow(0 14px 22px rgba(0,0,0,0.18));
+    }
 
     /* TEXT */
     .bihu-card h3 {
-  font-size: 2rem;
-  color: #2e7d32;
-  margin-bottom: 10px; /* ⬅ tighter */
-}
+      font-size: 1.9rem;
+      color: #2e7d32;
+      margin-bottom: 8px;
+    }
 
-.bihu-card p {
-  font-size: 1.03rem;
-  line-height: 1.7;
-  color: #355f3b;
-  margin-bottom: 18px; /* ⬅ tighter */
-}
-
+    .bihu-card p {
+      font-size: 1.02rem;
+      line-height: 1.65;
+      color: #355f3b;
+      margin-bottom: 14px;
+    }
 
     /* COUNTDOWN */
     .countdown-box {
-      padding: 14px 22px;
-      background: #f1f8e9;
-      border-radius: 14px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      padding: 10px 18px;
+      background: #f1f8e9;
+      border-radius: 12px;
       font-weight: 600;
       color: #2e7d32;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+      width: fit-content;
     }
 
     /* BACK BUTTON */
     .back-btn {
-      margin-top: 60px;
       display: inline-block;
-      padding: 14px 24px;
+      margin: 56px auto 0;
+      padding: 14px 26px;
       background: linear-gradient(135deg, #43a047, #66bb6a);
       color: #fff;
       border-radius: 14px;
       text-decoration: none;
       font-weight: 500;
+    }
+
+    .back-wrap {
+      text-align: center;
     }
   </style>
 </head>
@@ -109,15 +107,17 @@
       <div class="bihu-card">
         <img src="../images/rongali-bihu.png" class="bihu-image" alt="Rongali Bihu">
 
-        <h3>Rongali Bihu</h3>
-        <p>
-          Rongali Bihu, also known as Bohag Bihu, marks the Assamese New Year and
-          the arrival of spring. It celebrates renewal, joy, dance, music, and
-          agricultural beginnings.
-        </p>
+        <div>
+          <h3>Rongali Bihu</h3>
+          <p>
+            Rongali Bihu, also known as Bohag Bihu, marks the Assamese New Year and
+            the arrival of spring. It celebrates renewal, joy, dance, music, and
+            agricultural beginnings.
+          </p>
 
-        <div class="countdown-box">
-          ⏳ <span id="rongali">Loading…</span>
+          <div class="countdown-box">
+            ⏳ <span id="rongali">Loading…</span>
+          </div>
         </div>
       </div>
 
@@ -125,15 +125,17 @@
       <div class="bihu-card">
         <img src="../images/kongali-bihu.png" class="bihu-image" alt="Kongali Bihu">
 
-        <h3>Kongali Bihu</h3>
-        <p>
-          Kongali Bihu, or Kati Bihu, is observed during a difficult agricultural
-          period. It is marked by prayers, lamps, and hope for prosperity and
-          protection of crops.
-        </p>
+        <div>
+          <h3>Kongali Bihu</h3>
+          <p>
+            Kongali Bihu, or Kati Bihu, is observed during a difficult agricultural
+            period. It is marked by prayers, lamps, and hope for prosperity and
+            protection of crops.
+          </p>
 
-        <div class="countdown-box">
-          ⏳ <span id="kongali">Loading…</span>
+          <div class="countdown-box">
+            ⏳ <span id="kongali">Loading…</span>
+          </div>
         </div>
       </div>
 
@@ -141,20 +143,24 @@
       <div class="bihu-card full">
         <img src="../images/bhogali-bihu.png" class="bihu-image" alt="Bhogali Bihu">
 
-        <h3>Bhogali Bihu</h3>
-        <p>
-          Bhogali Bihu, also known as Magh Bihu, celebrates the harvest season with
-          feasts, bonfires, and community gatherings expressing gratitude and joy.
-        </p>
+        <div>
+          <h3>Bhogali Bihu</h3>
+          <p>
+            Bhogali Bihu, also known as Magh Bihu, celebrates the harvest season with
+            feasts, bonfires, and community gatherings expressing gratitude and joy.
+          </p>
 
-        <div class="countdown-box">
-          ⏳ <span id="bhogali">Loading…</span>
+          <div class="countdown-box">
+            ⏳ <span id="bhogali">Loading…</span>
+          </div>
         </div>
       </div>
 
     </div>
 
-    <a href="../index.html" class="back-btn">← Back to Festivals</a>
+    <div class="back-wrap">
+      <a href="../index.html" class="back-btn">← Back to Festivals</a>
+    </div>
 
   </div>
 
