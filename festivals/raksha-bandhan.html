@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Raksha Bandhan – Bond of Love</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    /* SOFT FESTIVE BACKGROUND */
+    body {
+      background:
+        radial-gradient(circle at 20% 25%, rgba(255, 183, 77, 0.65), transparent 45%),
+        radial-gradient(circle at 80% 30%, rgba(244, 143, 177, 0.65), transparent 45%),
+        radial-gradient(circle at 50% 80%, rgba(255, 241, 118, 0.65), transparent 50%),
+        linear-gradient(135deg, #fff8e1, #fdebd3);
+    }
+
+    .festival-layout {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    /* LEFT VISUAL */
+    .visual-box {
+      background: rgba(255,255,255,0.95);
+      border-radius: 28px;
+      min-height: 600px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255, 204, 128, 0.6), transparent 45%),
+        radial-gradient(circle at 70% 70%, rgba(244, 143, 177, 0.6), transparent 50%);
+      opacity: 0.8;
+      z-index: 1;
+    }
+
+    .festival-image {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 90%;
+      max-width: 580px;
+      z-index: 2;
+      filter: drop-shadow(0 20px 32px rgba(0,0,0,0.25));
+      pointer-events: none;
+    }
+
+    /* RIGHT CONTENT */
+    .festival-content h2 {
+      font-size: 3rem;
+      color: #c2185b;
+      margin-bottom: 18px;
+    }
+
+    .festival-content p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #6d1b3b;
+      max-width: 480px;
+    }
+
+    /* COUNTDOWN */
+    .countdown-box {
+      margin-top: 28px;
+      padding: 16px 26px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+      font-weight: 600;
+      color: #c2185b;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    /* BACK BUTTON */
+    .back-btn {
+      margin-top: 44px;
+      display: inline-block;
+      padding: 14px 22px;
+      background: linear-gradient(135deg, #c2185b, #f06292);
+      color: #fff;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="festival-layout">
+
+      <!-- LEFT -->
+      <div class="visual-box">
+        <div class="glow-bg"></div>
+        <img src="../images/raksha-bandhan.png" class="festival-image" alt="Raksha Bandhan">
+      </div>
+
+      <!-- RIGHT -->
+      <div class="festival-content">
+        <h2>Raksha Bandhan</h2>
+
+        <p>
+          Raksha Bandhan celebrates the sacred bond of love, trust, and protection
+          between brothers and sisters. Sisters tie a rakhi as a symbol of affection,
+          while brothers promise lifelong care and support, strengthening family
+          bonds and traditions.
+        </p>
+
+        <div class="countdown-box">
+          ⏳ <span id="countdown">Loading…</span>
+        </div>
+
+        <a href="../index.html" class="back-btn">← Back to Festivals</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    /* Raksha Bandhan – varies yearly (approx dates added) */
+    const rakshaDates = {
+      2025: "Aug 09, 2025 00:00:00",
+      2026: "Aug 28, 2026 00:00:00",
+      2027: "Aug 17, 2027 00:00:00",
+      2028: "Aug 05, 2028 00:00:00",
+      2029: "Aug 24, 2029 00:00:00"
+    };
+
+    const el = document.getElementById("countdown");
+    let year = new Date().getFullYear();
+    let targetDate = new Date(rakshaDates[year]).getTime();
+
+    if (Date.now() > targetDate) {
+      year++;
+      targetDate = new Date(rakshaDates[year]).getTime();
+    }
+
+    setInterval(() => {
+      const diff = targetDate - Date.now();
+
+      if (diff <= 0) {
+        el.textContent = "🎉 Happy Raksha Bandhan!";
+        return;
+      }
+
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor(diff / 3600000) % 24;
+      const m = Math.floor(diff / 60000) % 60;
+
+      el.textContent = `${d}d ${h}h ${m}m`;
+    }, 1000);
+  </script>
+
+</body>
+</html>
