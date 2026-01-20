@@ -19,17 +19,19 @@
 
     /* GRID */
     .bihu-layout {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(420px, 1fr));
-      gap: 64px;
-      justify-content: center;
-    }
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
 
     /* CARD */
     .bihu-card {
   background: #ffffff;
   border-radius: 28px;
-  padding: 36px 48px; /* ⬅ less top/bottom, more left/right */
+  padding: 32px 48px; /* ⬅ less top/bottom, more left/right */
   box-shadow: 0 18px 40px rgba(0,0,0,0.12);
   text-align: center;
   max-width: 560px;   /* ⬅ wider card */
@@ -40,15 +42,15 @@
     /* BOTTOM CARD */
     .bihu-card.full {
   grid-column: 1 / -1;
-  max-width: 640px; /* ⬅ wider bottom card */
+  max-width: 780px; /* ⬅ wider bottom card */
   margin: 0 auto;
 }
 
 
     /* IMAGE PLACEHOLDER */
     .bihu-image {
-  width: 68%;
-  max-width: 300px;
+  width: 85%;
+  max-width: 320px;
   margin: 0 auto 18px; /* ⬅ less bottom gap */
   display: block;
   filter: drop-shadow(0 16px 24px rgba(0,0,0,0.16));
