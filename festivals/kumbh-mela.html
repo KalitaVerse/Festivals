@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kumbh Mela – Sacred Pilgrimage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    /* KUMBH MELA BACKGROUND — SPIRITUAL RIVER DAWN */
+    body {
+      background:
+        radial-gradient(circle at 25% 30%, rgba(255, 183, 77, 0.45), transparent 45%),
+        radial-gradient(circle at 75% 35%, rgba(129, 212, 250, 0.45), transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(255, 236, 179, 0.45), transparent 55%),
+        linear-gradient(135deg, #e3f2fd, #fffde7);
+    }
+
+    .kumbh-layout {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    /* LEFT VISUAL */
+    .visual-box {
+      background: #ffffff;
+      border-radius: 28px;
+      min-height: 600px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Sacred glow */
+    .river-glow {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255, 213, 79, 0.5), transparent 40%),
+        radial-gradient(circle at 70% 35%, rgba(79, 195, 247, 0.5), transparent 45%),
+        radial-gradient(circle at 50% 75%, rgba(255, 241, 118, 0.5), transparent 50%);
+      opacity: 0.6;
+      z-index: 1;
+    }
+
+    /* Kumbh image */
+    .kumbh-image {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 85%;
+      max-width: 560px;
+      z-index: 2;
+      filter: drop-shadow(0 24px 36px rgba(0,0,0,0.25));
+      pointer-events: none;
+    }
+
+    /* RIGHT CONTENT */
+    .kumbh-content h2 {
+      font-size: 3rem;
+      color: #e65100;
+      margin-bottom: 18px;
+    }
+
+    .kumbh-content p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #5d4037;
+      max-width: 480px;
+    }
+
+    /* COUNTDOWN */
+    .countdown-box {
+      margin-top: 28px;
+      padding: 16px 26px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.14);
+      font-weight: 600;
+      color: #e65100;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    /* BACK BUTTON */
+    .back-btn {
+      margin-top: 44px;
+      display: inline-block;
+      padding: 14px 22px;
+      background: linear-gradient(135deg, #fb8c00, #ffb300);
+      color: #fff;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="kumbh-layout">
+
+      <!-- LEFT -->
+      <div class="visual-box">
+        <div class="river-glow"></div>
+        <img src="../images/kumbh-mela.png" class="kumbh-image" alt="Kumbh Mela">
+      </div>
+
+      <!-- RIGHT -->
+      <div class="kumbh-content">
+        <h2>Kumbh Mela</h2>
+
+        <p>
+          Kumbh Mela is the world’s largest spiritual gathering, where millions of
+          devotees come together to take a sacred dip in holy rivers. Held every
+          twelve years at four locations, it symbolizes faith, purification, and
+          spiritual awakening.
+        </p>
+
+        <div class="countdown-box">
+          ⏳ <span id="countdown">Loading…</span>
+        </div>
+
+        <a href="../index.html" class="back-btn">← Back to Festivals</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    /* Upcoming Kumbh Mela (Prayagraj 2025) */
+    const el = document.getElementById("countdown");
+    let targetDate = new Date("Jan 13, 2025 00:00:00").getTime();
+
+    if (Date.now() > targetDate) {
+      el.textContent = "🕉️ Ongoing / Completed";
+    } else {
+      setInterval(() => {
+        const diff = targetDate - Date.now();
+
+        if (diff <= 0) {
+          el.textContent = "🕉️ Kumbh Mela Begins!";
+          return;
+        }
+
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor(diff / 3600000) % 24;
+        const m = Math.floor(diff / 60000) % 60;
+
+        el.textContent = `${d}d ${h}h ${m}m`;
+      }, 1000);
+    }
+  </script>
+
+</body>
+</html>
