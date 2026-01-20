@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rath Yatra – Festival of Chariots</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    /* BACKGROUND – DIVINE & FESTIVE */
+    body {
+      background:
+        radial-gradient(circle at 20% 25%, rgba(255, 193, 7, 0.65), transparent 45%),
+        radial-gradient(circle at 80% 30%, rgba(244, 67, 54, 0.65), transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(255, 235, 59, 0.65), transparent 55%),
+        linear-gradient(135deg, #fff8e1, #ffecb3);
+    }
+
+    .rath-layout {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    /* LEFT VISUAL */
+    .visual-box {
+      background: #ffffff;
+      border-radius: 28px;
+      min-height: 600px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .rath-image {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 85%;
+      max-width: 560px;
+      filter: drop-shadow(0 22px 34px rgba(0,0,0,0.25));
+      pointer-events: none;
+    }
+
+    /* RIGHT CONTENT */
+    .rath-content h2 {
+      font-size: 3rem;
+      color: #c62828;
+      margin-bottom: 18px;
+    }
+
+    .rath-content p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #5d4037;
+      max-width: 480px;
+    }
+
+    /* COUNTDOWN */
+    .countdown-box {
+      margin-top: 28px;
+      padding: 16px 26px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+      font-weight: 600;
+      color: #c62828;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    /* BACK BUTTON */
+    .back-btn {
+      margin-top: 44px;
+      display: inline-block;
+      padding: 14px 22px;
+      background: linear-gradient(135deg, #c62828, #ef5350);
+      color: #fff;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="rath-layout">
+
+      <!-- LEFT -->
+      <div class="visual-box">
+        <img src="../images/rath-yatra.png" class="rath-image" alt="Rath Yatra">
+      </div>
+
+      <!-- RIGHT -->
+      <div class="rath-content">
+        <h2>Rath Yatra</h2>
+
+        <p>
+          Rath Yatra, also known as the Festival of Chariots, is a grand Hindu
+          festival dedicated to Lord Jagannath. Celebrated in Puri, Odisha, the
+          festival marks the annual journey of the deities on massive chariots,
+          symbolizing unity, devotion, and divine grace.
+        </p>
+
+        <div class="countdown-box">
+          ⏳ <span id="countdown">Loading…</span>
+        </div>
+
+        <a href="../index.html" class="back-btn">← Back to Festivals</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    /* Rath Yatra – dates vary yearly (approx, can update later) */
+    const rathDates = {
+      2025: "Jun 27, 2025 00:00:00",
+      2026: "Jul 16, 2026 00:00:00",
+      2027: "Jul 05, 2027 00:00:00",
+      2028: "Jun 24, 2028 00:00:00",
+      2029: "Jul 13, 2029 00:00:00"
+    };
+
+    const el = document.getElementById("countdown");
+    let year = new Date().getFullYear();
+    let targetDate = new Date(rathDates[year]).getTime();
+
+    if (Date.now() > targetDate) {
+      year++;
+      targetDate = new Date(rathDates[year]).getTime();
+    }
+
+    setInterval(() => {
+      const diff = targetDate - Date.now();
+
+      if (diff <= 0) {
+        el.textContent = "🎉 Happy Rath Yatra!";
+        return;
+      }
+
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor(diff / 3600000) % 24;
+      const m = Math.floor(diff / 60000) % 60;
+
+      el.textContent = `${d}d ${h}h ${m}m`;
+    }, 1000);
+  </script>
+
+</body>
+</html>
