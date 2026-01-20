@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bihu – Festival of Assam</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    /* 🌿 Nature themed background */
+    body.bihu-page {
+      background:
+        radial-gradient(circle at 20% 30%, rgba(139,195,74,0.35), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(255,193,7,0.35), transparent 45%),
+        linear-gradient(135deg, #e8f5e9, #f1f8e9);
+    }
+
+    .bihu-layout {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 48px;
+      margin-top: 40px;
+    }
+
+    /* Bottom single card */
+    .bihu-layout .full {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* 🌾 Bihu Card */
+    .bihu-card {
+      background: #ffffffee;
+      border-radius: 26px;
+      padding: 32px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .bihu-visual {
+      position: relative;
+      height: 260px;
+      margin-bottom: 24px;
+      display: grid;
+      place-items: center;
+    }
+
+    /* Image placeholder (PNG will be added later) */
+    .bihu-image {
+      width: 70%;
+      max-width: 280px;
+      filter: drop-shadow(0 14px 26px rgba(0,0,0,0.25));
+    }
+
+    .bihu-card h2 {
+      font-size: 2.2rem;
+      color: #2e7d32;
+      margin-bottom: 14px;
+    }
+
+    .bihu-card p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #3e4c3a;
+      margin-bottom: 22px;
+    }
+
+    /* Countdown */
+    .countdown-box {
+      padding: 14px 22px;
+      background: #ffffff;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: #33691e;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.14);
+    }
+
+    /* Back button */
+    .back-btn {
+      display: inline-block;
+      margin-top: 60px;
+      padding: 14px 24px;
+      background: linear-gradient(135deg, #558b2f, #8bc34a);
+      color: #fff;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Mobile (basic support, not priority) */
+    @media (max-width: 900px) {
+      .bihu-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .bihu-layout .full {
+        grid-column: auto;
+      }
+    }
+  </style>
+</head>
+
+<body class="bihu-page">
+
+  <div class="container">
+
+    <div class="bihu-layout">
+
+      <!-- 🌸 Rongali Bihu -->
+      <div class="bihu-card">
+        <div class="bihu-visual">
+          <img src="../images/rongali-bihu.png" class="bihu-image" alt="Rongali Bihu">
+        </div>
+
+        <h2>Rongali Bihu</h2>
+        <p>
+          Rongali Bihu, also known as Bohag Bihu, marks the Assamese New Year and
+          the arrival of spring. It celebrates renewal, joy, dance, music,
+          and agricultural beginnings.
+        </p>
+
+        <div class="countdown-box">
+          ⏳ <span id="rongali-countdown">Loading…</span>
+        </div>
+      </div>
+
+      <!-- 🌾 Kongali Bihu -->
+      <div class="bihu-card">
+        <div class="bihu-visual">
+          <img src="../images/kongali-bihu.png" class="bihu-image" alt="Kongali Bihu">
+        </div>
+
+        <h2>Kongali Bihu</h2>
+        <p>
+          Kongali Bihu, or Kati Bihu, is observed during a difficult agricultural
+          period. It is marked by prayers, lamps, and hope for prosperity
+          and protection of crops.
+        </p>
+
+        <div class="countdown-box">
+          ⏳ <span id="kongali-countdown">Loading…</span>
+        </div>
+      </div>
+
+      <!-- 🌾 Bhogali Bihu (Bottom, Centered) -->
+      <div class="full">
+        <div class="bihu-card">
+          <div class="bihu-visual">
+            <img src="../images/bhogali-bihu.png" class="bihu-image" alt="Bhogali Bihu">
+          </div>
+
+          <h2>Bhogali Bihu</h2>
+          <p>
+            Bhogali Bihu, or Magh Bihu, celebrates the harvest season. It is a
+            festival of feasting, gratitude, community gatherings,
+            and traditional food.
+          </p>
+
+          <div class="countdown-box">
+            ⏳ <span id="bhogali-countdown">Loading…</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <a href="../index.html" class="back-btn">← Back to Festivals</a>
+
+  </div>
+
+  <script>
+    /* 📅 Bihu Dates (yearly anchors) */
+    const dates = {
+      rongali: { month: 3, day: 14 },  // April 14
+      kongali: { month: 9, day: 15 },  // Oct 15
+      bhogali: { month: 0, day: 15 }   // Jan 15
+    };
+
+    function startCountdown(id, config) {
+      const el = document.getElementById(id);
+
+      function getTargetDate() {
+        const now = new Date();
+        let year = now.getFullYear();
+        let target = new Date(year, config.month, config.day);
+
+        if (now > target) {
+          target = new Date(year + 1, config.month, config.day);
+        }
+        return target;
+      }
+
+      let targetDate = getTargetDate().getTime();
+
+      setInterval(() => {
+        const diff = targetDate - Date.now();
+
+        if (diff <= 0) {
+          el.textContent = "🎉 Ongoing!";
+          return;
+        }
+
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor(diff / 3600000) % 24;
+        const m = Math.floor(diff / 60000) % 60;
+
+        el.textContent = `${d}d ${h}h ${m}m`;
+      }, 1000);
+    }
+
+    startCountdown("rongali-countdown", dates.rongali);
+    startCountdown("kongali-countdown", dates.kongali);
+    startCountdown("bhogali-countdown", dates.bhogali);
+  </script>
+
+</body>
+</html>
