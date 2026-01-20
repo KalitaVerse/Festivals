@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Baisakhi – Harvest Festival</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    /* BAISAKHI BACKGROUND — WARM HARVEST TONES */
+    body {
+      background:
+        radial-gradient(circle at 20% 25%, rgba(255, 193, 7, 0.65), transparent 45%),
+        radial-gradient(circle at 80% 30%, rgba(76, 175, 80, 0.65), transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(255, 152, 0, 0.65), transparent 55%),
+        linear-gradient(135deg, #fff8e1, #f1f8e9);
+    }
+
+    .baisakhi-layout {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    /* LEFT VISUAL */
+    .visual-box {
+      background: #ffffff;
+      border-radius: 28px;
+      min-height: 600px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .harvest-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255, 224, 130, 0.6), transparent 40%),
+        radial-gradient(circle at 70% 70%, rgba(200, 230, 201, 0.6), transparent 45%);
+      z-index: 1;
+    }
+
+    .baisakhi-image {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 85%;
+      max-width: 560px;
+      z-index: 2;
+      filter: drop-shadow(0 22px 34px rgba(0,0,0,0.25));
+      pointer-events: none;
+    }
+
+    /* RIGHT CONTENT */
+    .baisakhi-content h2 {
+      font-size: 3rem;
+      color: #e65100;
+      margin-bottom: 18px;
+    }
+
+    .baisakhi-content p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #5d4037;
+      max-width: 480px;
+    }
+
+    /* COUNTDOWN */
+    .countdown-box {
+      margin-top: 28px;
+      padding: 16px 26px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.14);
+      font-weight: 600;
+      color: #e65100;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    /* BACK BUTTON */
+    .back-btn {
+      margin-top: 44px;
+      display: inline-block;
+      padding: 14px 22px;
+      background: linear-gradient(135deg, #f57c00, #fbc02d);
+      color: #fff;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="baisakhi-layout">
+
+      <!-- LEFT -->
+      <div class="visual-box">
+        <div class="harvest-bg"></div>
+        <img src="../images/baisakhi.png" class="baisakhi-image" alt="Baisakhi Festival">
+      </div>
+
+      <!-- RIGHT -->
+      <div class="baisakhi-content">
+        <h2>Baisakhi</h2>
+
+        <p>
+          Baisakhi marks the harvest festival of Punjab and the Punjabi New Year.
+          It celebrates prosperity, gratitude, and joy with bhangra, giddha,
+          community feasts, and thanksgiving for a bountiful harvest.
+        </p>
+
+        <div class="countdown-box">
+          ⏳ <span id="countdown">Loading…</span>
+        </div>
+
+        <a href="../index.html" class="back-btn">← Back to Festivals</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    /* Baisakhi – April 13/14 (using April 13) */
+    const el = document.getElementById("countdown");
+    let year = new Date().getFullYear();
+
+    let targetDate = new Date(`Apr 13, ${year} 00:00:00`).getTime();
+
+    if (Date.now() > targetDate) {
+      year++;
+      targetDate = new Date(`Apr 13, ${year} 00:00:00`).getTime();
+    }
+
+    setInterval(() => {
+      const diff = targetDate - Date.now();
+
+      if (diff <= 0) {
+        el.textContent = "🎉 Happy Baisakhi!";
+        return;
+      }
+
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor(diff / 3600000) % 24;
+      const m = Math.floor(diff / 60000) % 60;
+
+      el.textContent = `${d}d ${h}h ${m}m`;
+    }, 1000);
+  </script>
+
+</body>
+</html>
