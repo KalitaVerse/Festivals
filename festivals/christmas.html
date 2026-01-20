@@ -8,95 +8,95 @@
   <link rel="stylesheet" href="../css/style.css">
 
   <style>
-    /* CHRISTMAS BACKGROUND — WARM WINTER NIGHT */
-    body {
-      background:
-        radial-gradient(circle at 18% 22%, rgba(244, 67, 54, 0.35), transparent 45%),
-        radial-gradient(circle at 82% 28%, rgba(33, 150, 243, 0.35), transparent 50%),
-        radial-gradient(circle at 50% 85%, rgba(255,255,255,0.25), transparent 55%),
-        linear-gradient(135deg, #0b1d26, #1e3c52, #2c5364);
-    }
+  /* CHRISTMAS BACKGROUND — CLEAN WINTER FESTIVE */
+  body {
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.25), transparent 45%),
+      radial-gradient(circle at 85% 30%, rgba(200, 230, 255, 0.35), transparent 50%),
+      linear-gradient(135deg, #0b3d2e, #1b5e20);
+  }
 
-    .christmas-layout {
-      display: grid;
-      grid-template-columns: 1.6fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
+  .christmas-layout {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
 
-    /* LEFT VISUAL */
-    .visual-box {
-      background: rgba(255,255,255,0.92);
-      border-radius: 28px;
-      min-height: 600px;
-      position: relative;
-      overflow: hidden;
-    }
+  /* LEFT VISUAL */
+  .visual-box {
+    background: #f9fbfc;
+    border-radius: 28px;
+    min-height: 600px;
+    position: relative;
+    overflow: hidden;
+  }
 
-    /* Soft snow glow */
-    .snow-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 30% 25%, rgba(255,255,255,0.6), transparent 40%),
-        radial-gradient(circle at 70% 35%, rgba(224,247,250,0.55), transparent 45%),
-        radial-gradient(circle at 50% 75%, rgba(200,230,255,0.55), transparent 50%);
-      z-index: 1;
-    }
+  /* Soft snow glow */
+  .snow-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 30% 25%, rgba(255,255,255,0.6), transparent 40%),
+      radial-gradient(circle at 70% 35%, rgba(220,240,255,0.6), transparent 45%),
+      radial-gradient(circle at 50% 75%, rgba(240,250,255,0.6), transparent 50%);
+    z-index: 1;
+  }
 
-    /* Christmas PNG */
-    .christmas-image {
-      position: absolute;
-      inset: 0;
-      margin: auto;
-      width: 70%;
-      max-width: 360px;
-      z-index: 2;
-      filter: drop-shadow(0 24px 36px rgba(0,0,0,0.28));
-      pointer-events: none;
-    }
+  /* Christmas PNG */
+  .christmas-image {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 72%;
+    max-width: 360px;
+    z-index: 2;
+    filter: drop-shadow(0 22px 34px rgba(0,0,0,0.25));
+    pointer-events: none;
+  }
 
-    /* RIGHT CONTENT */
-    .christmas-content h2 {
-      font-size: 3rem;
-      color: #ffebee; /* readable white-red */
-      margin-bottom: 18px;
-    }
+  /* RIGHT CONTENT — FIXED */
+  .christmas-content h2 {
+    font-size: 3rem;
+    color: #1b5e20;
+    margin-bottom: 18px;
+  }
 
-    .christmas-content p {
-      font-size: 1.15rem;
-      line-height: 1.85;
-      color: #e3f2fd;
-      max-width: 480px;
-    }
+  .christmas-content p {
+    font-size: 1.15rem;
+    line-height: 1.85;
+    color: #2e3c43;
+    max-width: 480px;
+  }
 
-    /* COUNTDOWN */
-    .countdown-box {
-      margin-top: 28px;
-      padding: 16px 26px;
-      background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 14px 30px rgba(0,0,0,0.2);
-      font-weight: 600;
-      color: #c62828;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      white-space: nowrap;
-    }
+  /* COUNTDOWN */
+  .countdown-box {
+    margin-top: 28px;
+    padding: 16px 26px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.16);
+    font-weight: 600;
+    color: #c62828;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
 
-    /* BACK BUTTON */
-    .back-btn {
-      margin-top: 44px;
-      display: inline-block;
-      padding: 14px 22px;
-      background: linear-gradient(135deg, #c62828, #ef5350);
-      color: #fff;
-      border-radius: 14px;
-      text-decoration: none;
-      font-weight: 500;
-    }
-  </style>
+  /* BACK BUTTON */
+  .back-btn {
+    margin-top: 44px;
+    display: inline-block;
+    padding: 14px 22px;
+    background: linear-gradient(135deg, #c62828, #e53935);
+    color: #fff;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 500;
+  }
+</style>
+
 </head>
 
 <body>
